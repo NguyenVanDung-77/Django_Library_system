@@ -1,0 +1,147 @@
+{
+  "info": {
+    "name": "Library SOA - 3 Services",
+    "description": "API Collection for Library Management SOA System with 3 services",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "User Service",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"testuser\",\n    \"email\": \"test@example.com\",\n    \"password\": \"testpass123\",\n    \"full_name\": \"Test User\",\n    \"role\": \"reader\"\n}"
+            },
+            "url": "http://localhost:8001/api/register/"
+          }
+        },
+        {
+          "name": "Login User", 
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"testpass123\"\n}"
+            },
+            "url": "http://localhost:8001/api/login/"
+          }
+        },
+        {
+          "name": "Get User List",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8001/api/users/"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Book Service",
+      "item": [
+        {
+          "name": "Get All Books",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8002/api/books/"
+          }
+        },
+        {
+          "name": "Get Book by ID",
+          "request": {
+            "method": "GET", 
+            "url": "http://localhost:8002/api/books/1/"
+          }
+        },
+        {
+          "name": "Create Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"New Book\",\n    \"author\": \"Author Name\",\n    \"isbn\": \"9781234567899\",\n    \"category\": \"Technology\",\n    \"publisher\": \"Tech Publisher\",\n    \"publication_year\": 2024,\n    \"total_copies\": 3,\n    \"available_copies\": 3,\n    \"description\": \"A new tech book\"\n}"
+            },
+            "url": "http://localhost:8002/api/books/create/"
+          }
+        },
+        {
+          "name": "Search Books",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8002/api/books/?search=python"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Borrow Service", 
+      "item": [
+        {
+          "name": "Borrow Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw", 
+              "raw": "{\n    \"book_id\": 1,\n    \"user_id\": 1\n}"
+            },
+            "url": "http://localhost:8003/api/borrow/"
+          }
+        },
+        {
+          "name": "Return Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "http://localhost:8003/api/return/1/"
+          }
+        },
+        {
+          "name": "Get Borrow History",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8003/api/history/?user_id=1"
+          }
+        },
+        {
+          "name": "Get All Borrow Records",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8003/api/all-records/"
+          }
+        }
+      ]
+    }
+  ]
+}
